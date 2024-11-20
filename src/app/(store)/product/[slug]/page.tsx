@@ -1,3 +1,5 @@
+import AddToBasketButton from '@/components/AddToBasketButton';
+import { Button } from '@/components/ui/button';
 import { imageUrl } from '@/lib/imageUrl';
 import { getProductBySlug } from '@/sanity/lib/products/getProductBySlug';
 import { PortableText } from 'next-sanity';
@@ -42,6 +44,10 @@ const ProductPage = async ( {params} : { params : Promise<{slug:string}>}) => {
                             <PortableText value={product.description} />
                         )}
                     </div>
+                </div>
+                <div className='mt-6'>
+                    <AddToBasketButton product={product} disable={isOutOfStock} />
+                    {/* <Button>add to bucket</Button> */}
                 </div>
             </div>
         </div>
