@@ -7,6 +7,11 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react'
 
+
+export const dynamic = "force-static";
+export const relatidate = 60;
+
+
 const ProductPage = async ( {params} : { params : Promise<{slug:string}>}) => {
     const {slug} = await params;
     const product = await getProductBySlug(slug) 
@@ -40,9 +45,10 @@ const ProductPage = async ( {params} : { params : Promise<{slug:string}>}) => {
                         {product.price?.toFixed(2)}
                     </div>
                     <div className='prose max-w-none mb-6'>
-                        {Array.isArray(product.description) && (
+                        {product.description}
+                        {/* {Array.isArray(product.description) && (
                             <PortableText value={product.description} />
-                        )}
+                        )} */}
                     </div>
                 </div>
                 <div className='mt-6'>

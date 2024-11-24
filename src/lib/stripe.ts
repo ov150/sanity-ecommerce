@@ -1,7 +1,13 @@
-import Stripe from "stripe"
+import Stripe from "stripe";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: "2024-10-28.acacia",
-})
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+
+if (!stripeSecretKey) {
+  throw new Error("Missing STRIPE_SECRET_KEY environment variable");
+}
+
+const stripe = new Stripe(stripeSecretKey, {
+  apiVersion: "2024-10-28.acacia",
+});
 
 export default stripe;
